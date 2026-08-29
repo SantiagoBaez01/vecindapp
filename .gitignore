@@ -1,0 +1,51 @@
+# --- Build ---
+target/
+build/
+*.jar
+*.war
+*.class
+
+# --- IDE ---
+.idea/
+*.iml
+*.iws
+.vscode/
+nbactions.xml
+nb-configuration.xml
+.settings/
+.project
+.classpath
+
+# --- Entorno / secretos ---
+.env
+.env.local
+application-local.properties
+application-secrets.properties
+
+# --- Sistema operativo ---
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Logs y temporales ---
+*.log
+logs/
+*.bak
+*.tmp
+
+# --- Archivos de trabajo de MySQL Workbench ---
+*.mwb.bak
+
+# --- Artefactos del proyecto anterior ---
+*.zip
+
+# --- Proyecto anterior, pendiente de migracion a /backend ---
+ServiMarket-master/
+
+# --- Grabaciones y multimedia (nunca al repo) ---
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.m4a
+*.wav
