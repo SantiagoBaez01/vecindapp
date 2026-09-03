@@ -47,6 +47,21 @@ Una aplicación web, provista por el barrio a sus residentes, donde:
 El valor no está en digitalizar la búsqueda, sino en que la reputación deja de ser volátil y
 pasa a acumularse: cada contratación mejora la información disponible para la siguiente.
 
+## Objetivos del Proyecto
+
+- Reducir el tiempo que invierte un residente en encontrar un prestador confiable, pasando de esperar respuestas en un chat, tal vez por horas, a realizar una búsqueda filtrada en minutos.
+
+- Centralizar la oferta de servicios exclusivamente en prestadores que ya pasaron por el filtro administrativo del barrio.
+
+- Transformar las recomendaciones volátiles del boca a boca vecinal en un historial de reputación acumulativo y permanente.
+
+## Criterios de Éxito
+- 100% de los prestadores listados en el catálogo cuentan con estado verificado y habilitado por la administración del barrio.
+
+- Al menos un 40% de los servicios finalizados a través de la plataforma generan una reseña, construyendo la base de confianza.
+
+- Reducción estimada del 50% en la frecuencia de mensajes tipo "alguien conoce un plomero" en los grupos de mensajería del barrio, limpiando el ruido de los canales de comunicación informales.
+
 ---
 
 ## Alcance
@@ -69,17 +84,71 @@ pasa a acumularse: cada contratación mejora la información disponible para la 
 
 ### Fuera de alcance
 
-- **Múltiples barrios.** La primera versión opera sobre un único barrio.
-- **Aplicación móvil nativa y PWA.** La solución es una aplicación web responsive.
+#### Posibles extensiones a futuro
+- **Múltiples barrios.** La primera versión opera sobre un único barrio. Posible extensión a más barrios en el futuro.
+- **Aplicación móvil nativa y PWA.** La solución es una aplicación web responsive. Posibilidad de extenderse a Aplicación móvil nativa para instalar desde Play Store o Apple Store (Generan más confianza que una PWA).
+- **Pagos online.** El acuerdo económico entre residente y prestador ocurre fuera de la
+  plataforma. En una posible extensión a futuro podría acordarse por la plataforma el método de pago que luego se utilizará por fuera de la plataforma, lo cual sería más cómodo para ambos usuarios la preparación del pago.
+- **Mensajería en tiempo real** entre residente y prestador. En una posible extensión a futuro podría utilizarse un sistema de mensajería interno en tiempo real con websockets para tener centralizada la comunicación entre usuarios, para no tener que cambiar y/o utilizar distintas plataformas (Whatsapp, Telegram).
+
+#### Descartado definitivamente
 - **Gestión de accesos, validación de identidad y avisos a portería.** El barrio ya cuenta
   con sus propios mecanismos de control de ingreso; la plataforma no los reemplaza.
-- **Pagos online.** El acuerdo económico entre residente y prestador ocurre fuera de la
-  plataforma.
-- **Mensajería en tiempo real** entre residente y prestador.
 - **Verificación automática de matrículas o antecedentes.** La verificación es un acto
   administrativo humano; el sistema registra su resultado.
 
 ---
+## Análisis de Competencia
+
+En el contexto de un barrio privado, el competidor directo de esta plataforma no es una aplicación comercial externa, sino **los métodos y canales informales** que los vecinos utilizan actualmente para resolver el problema de contratación.
+
+* **Grupos de mensajería vecinales como WhatsApp o Telegram**
+  * *La ventaja:* Inmediatez y costumbre de uso.
+  * *La desventaja:* La información es fugaz y se pierde rápidamente en el historial de chat. No existe un sistema de calificación objetivo, la recomendación de un mal trabajo es difícil de rastrear, y los pedidos constantes de oficios generan "ruido" en grupos que se saturan.
+* **Cartelera física o boletín estático de la administración:**
+  * *La ventaja:* Garantiza que los prestadores listados están autorizados.
+  * *La desventaja:* Es una comunicación unidireccional. No hay métricas, no hay interacción y no existe manera de que un vecino se entere si el trabajo de ese prestador fue excelente o deficiente.
+* **El boca a boca tradicional:**
+  * *La ventaja:* Alta confianza personal.
+  * *La desventaja:* Alcance extremadamente limitado, reduciendo las opciones del residente únicamente a sus vecinos más inmediatos.
+
+**Ventaja competitiva de Vecindapp:**
+La plataforma centraliza lo mejor de las alternativas actuales: mantiene la **seguridad** del control administrativo como la cartelera y captura la **confianza** de la recomendación vecinal, pero transformando ese dato en un activo digital persistente, filtrable y acumulativo para toda la comunidad.
+
+----
+## Análisis de Viabilidad
+
+* **Viabilidad Técnica:** El riesgo tecnológico es bajo. Se va a usar el stack con Java 21, Spring Boot, Thymeleaf y MySQL 8, que ya manejamos gracias a la trayectoria en la tecnicatura. La decisión consciente de evitar arquitecturas distribuidas, APIs separadas del frontend y despliegues complejos en contenedores garantiza que el esfuerzo técnico se centre en resolver la lógica de negocio y no en la configuración de la infraestructura.
+* **Viabilidad Temporal:** El cronograma proyectado es realista para un equipo de dos personas. Al haber acotado formalmente el alcance, el volumen de módulos a desarrollar entra en el plazo de 10 semanas de codificación y pruebas, dejando margen para imprevistos.
+* **Viabilidad de Dominio:** Las reglas de negocio, el circuito de habilitaciones y los problemas de fricción descritos se validan a través del contacto directo con la realidad de los barrios privados. Se cuenta con posibles usuarios que podrían realizar una encuesta o validar el flujo de la aplicación. Esto asegura que la solución no se base en supuestos teóricos, sino en el funcionamiento real y las necesidades concretas de estas comunidades.
+
+----
+## Riesgos y Mitigaciones
+
+Para asegurar la entrega del Trabajo Final Integrador en la fecha pautada, se identificaron los siguientes riesgos y sus respectivas estrategias de mitigación. En caso de desvíos en el cronograma, se aplicará una política de recorte basada en prioridades.
+
+### Priorización del Alcance
+En caso de tener que reducir el alcance por falta de tiempo, el desarrollo se recortará de abajo hacia arriba según la siguiente lista de prioridades:
+1. **Prioridad Alta (Innegociable):** Autenticación, padrón de residentes, ABM de prestadores y catálogo público. Creación de solicitudes de prestación de servicio.
+2. **Prioridad Media:** Sistema de reseñas para trabajos finalizados.
+3. **Prioridad Baja (Recortable):** Panel de moderación avanzado de reseñas para la administración y filtros complejos en el catálogo.
+
+### Matriz de Riesgos
+
+* **Atraso en el cronograma.**
+  * *Impacto:* Alto.
+  * *Probabilidad:* Media.
+  * *Mitigación:* Se aplicará estrictamente la lista de prioridades definida arriba. Si el tiempo escasea, la moderación de reseñas se gestionará directamente a nivel de base de datos y se descartará su interfaz gráfica administrativa, garantizando que el flujo principal funcione para la presentación.
+* **Curva de aprendizaje en la maquetación con Thymeleaf.**
+  * *Impacto:* Medio, tecnología con experiencia parcial o nula.
+  * *Probabilidad:* Alta.
+  * *Mitigación:* Se priorizará la funcionalidad sobre la estética. Se utilizará un framework CSS estándar, evitando invertir tiempo en diseños personalizados.
+* **Problemas con el nivel gratuito de la base de datos en Aiven.**
+  * *Impacto:* Medio.
+  * *Probabilidad:* Baja.
+  * *Mitigación:* Si la instancia gestionada falla o se suspende, la demostración y evaluación del proyecto se realizará ejecutando el sistema contra una base de datos MySQL local sin que esto afecte el código ni el modelo de datos.
+
+----
 
 ## Stack tecnológico
 
