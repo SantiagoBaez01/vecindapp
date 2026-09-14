@@ -22,10 +22,18 @@ CREATE TABLE rubro (
 
 CREATE TABLE prestador (
     usuario_id INT PRIMARY KEY,
-    rubro_id INT NOT NULL,
     nombre_completo VARCHAR(255) NOT NULL,
+    descripcion TEXT,
     estado_verificacion ENUM('PENDIENTE', 'HABILITADO', 'RECHAZADO') DEFAULT 'PENDIENTE',
-    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+);
+
+-- Un prestador puede ofrecer mas de un oficio (ej. plomeria y gas).
+CREATE TABLE prestador_rubro (
+    prestador_id INT NOT NULL,
+    rubro_id INT NOT NULL,
+    PRIMARY KEY (prestador_id, rubro_id),
+    FOREIGN KEY (prestador_id) REFERENCES prestador(usuario_id) ON DELETE CASCADE,
     FOREIGN KEY (rubro_id) REFERENCES rubro(id)
 );
 
@@ -46,6 +54,7 @@ CREATE TABLE resena (
     solicitud_id INT UNIQUE NOT NULL,
     calificacion INT NOT NULL CHECK (calificacion >= 1 AND calificacion <= 5),
     comentario TEXT,
+    estado ENUM('VISIBLE', 'OCULTA') NOT NULL DEFAULT 'VISIBLE',
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (solicitud_id) REFERENCES solicitud(id)
 );

@@ -196,16 +196,17 @@ propias en el tablero.
 
 ---
 
-## Ajustes pendientes sobre el modelo de datos
+## Ajustes al modelo de datos
 
-Cuestiones detectadas al definir los módulos, que afectan al esquema y deben resolverse antes
-de comenzar el desarrollo:
+Al definir el alcance de cada módulo se detectaron tres desajustes entre lo que el esquema
+permitía y lo que los módulos necesitan hacer. Ya están resueltos y documentados en la
+[decisión 008](decisiones/008-ajustes-modelo-de-datos.md):
 
-| # | Situación | Módulo afectado |
-|---|---|---|
-| 1 | `prestador.rubro_id` admite un único rubro. Un prestador que ofrece más de un oficio requeriría una tabla intermedia `prestador_rubro` | M2, M3 |
-| 2 | `resena` no tiene campo de estado o visibilidad, necesario para la moderación prevista en M6 | M6 |
-| 3 | La ficha de detalle de M3 muestra solo nombre y rubro; falta decidir si el prestador lleva descripción o datos de contacto adicionales | M3 |
+| # | Situación | Resolución | Módulos |
+|---|---|---|---|
+| 1 | `prestador` admitía un único rubro | Tabla intermedia `prestador_rubro` | M2, M3 |
+| 2 | `resena` no permitía moderar sin borrar | Campo `estado` (`VISIBLE` / `OCULTA`) | M6 |
+| 3 | La ficha del prestador no tenía contenido propio | Campo `descripcion` | M3 |
 
 ---
 

@@ -39,11 +39,21 @@ Perfil extendido de los trabajadores que ofrecen sus servicios.
 | Columna | Tipo de Dato | Restricciones | Descripción |
 |---|---|---|---|
 | `usuario_id` | INT | PK, FK (usuario.id) | Relación 1 a 1 con la tabla `usuario` (DELETE CASCADE). |
-| `rubro_id` | INT | FK (rubro.id), NOT NULL | Oficio principal asociado al prestador. |
 | `nombre_completo` | VARCHAR(255) | NOT NULL | Nombre y apellido, o razón social del prestador. |
+| `descripcion` | TEXT | NULL | Texto libre que el prestador publica en su ficha: servicios que ofrece, experiencia, matrícula. |
 | `estado_verificacion` | ENUM | DEFAULT 'PENDIENTE' | Estado dictaminado por la administración: `'PENDIENTE'`, `'HABILITADO'`, `'RECHAZADO'`. |
 
-## 5. Tabla `solicitud`
+## 5. Tabla `prestador_rubro`
+Relación muchos a muchos entre prestadores y rubros. Permite que un mismo prestador ofrezca más de un oficio (por ejemplo, plomería y gas).
+
+| Columna | Tipo de Dato | Restricciones | Descripción |
+|---|---|---|---|
+| `prestador_id` | INT | PK compuesta, FK (prestador.usuario_id) | Prestador que ofrece el oficio (DELETE CASCADE). |
+| `rubro_id` | INT | PK compuesta, FK (rubro.id) | Oficio ofrecido. |
+
+La clave primaria compuesta impide que se cargue dos veces el mismo rubro para un prestador.
+
+## 6. Tabla `solicitud`
 Transacción central del sistema que vincula a un residente con un prestador.
 
 | Columna | Tipo de Dato | Restricciones | Descripción |
@@ -56,7 +66,7 @@ Transacción central del sistema que vincula a un residente con un prestador.
 | `fecha_creacion` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Fecha y hora en que se envió la solicitud. |
 | `fecha_actualizacion` | TIMESTAMP | ON UPDATE CURRENT_TIMESTAMP| Fecha de la última transición de estado. |
 
-## 6. Tabla `resena`
+## 7. Tabla `resena`
 Evaluación del servicio brindado. Solo puede existir si la solicitud está finalizada.
 
 | Columna | Tipo de Dato | Restricciones | Descripción |
@@ -65,4 +75,5 @@ Evaluación del servicio brindado. Solo puede existir si la solicitud está fina
 | `solicitud_id` | INT | UNIQUE, FK (solicitud.id), NOT NULL | Garantiza una única reseña por solicitud de trabajo. |
 | `calificacion` | INT | NOT NULL, CHECK (1-5) | Puntaje obligatorio de 1 a 5 estrellas. |
 | `comentario` | TEXT | NULL | Opinión o descargo textual opcional sobre el trabajo realizado. |
+| `estado` | ENUM | NOT NULL, DEFAULT 'VISIBLE' | Visibilidad de la reseña: `'VISIBLE'` u `'OCULTA'`. La administración puede ocultarla sin borrar el registro. |
 | `fecha_creacion` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Fecha de publicación de la reseña. |

@@ -15,6 +15,7 @@ memoria del equipo, y que quede explícito el criterio detrás de cada elección
 | [005](005-exclusion-control-de-accesos.md) | Exclusión del control de accesos y la validación de identidad | 27/08/2026 |
 | [006](006-aplicacion-web-sin-movil.md) | Aplicación web responsive, sin versión móvil ni PWA | 27/08/2026 |
 | [007](007-nube-solo-base-de-datos.md) | El componente en la nube es únicamente la base de datos | 27/08/2026 |
+| [008](008-ajustes-modelo-de-datos.md) | Ajustes al modelo de datos tras la definición de módulos | 14/09/2026 |
 
 ## Formato
 
