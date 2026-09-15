@@ -242,6 +242,7 @@ distribuida ni contenedores: para este volumen serían sobreingeniería.
 |---|---|
 | [Módulos del sistema](docs/modulos.md) | Listado de módulos a desarrollar, con responsabilidad, funcionalidades, entidades y prioridad |
 | [Diagrama entidad-relación](docs/der-db.png) | Esquema de la base de datos |
+| [Diagrama de clases (UML)](docs/UML/diagrama_clases.md) | Modelo de dominio orientado a objetos del backend, en Mermaid |
 | [Diccionario de datos](docs/diccionario_datos.md) | Detalle de cada tabla y columna |
 | [Scripts de base de datos](db/) | `schema.sql` (DDL), `data.sql` (datos semilla) y la regla de sincronización del esquema |
 | [Registro de decisiones](docs/decisiones/) | Cada decisión del proyecto con su contexto, alternativas evaluadas, opción elegida y consecuencias |

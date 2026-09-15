@@ -1,7 +1,7 @@
 # Diagrama de Clases (UML) - Vecindapp
 
 Este diagrama representa el modelo de dominio orientado a objetos para el backend en Spring Boot.
-Apartir de acá se va a modificar y versionar, una vez completo se exporta a imagen o PDF.
+A partir de acá se va a modificar y versionar, una vez completo se exporta a imagen o PDF.
 
 ```mermaid
 classDiagram
@@ -93,7 +93,7 @@ classDiagram
     Usuario <|-- Residente : hereda
     Usuario <|-- Prestador : hereda
     
-    Prestador "1" --> "*" Rubro : ofrece (ManyToMany)
+    Prestador "*" --> "*" Rubro : ofrece (ManyToMany)
     
     Residente "1" --> "*" Solicitud : genera (OneToMany)
     Prestador "1" --> "*" Solicitud : recibe (OneToMany)
