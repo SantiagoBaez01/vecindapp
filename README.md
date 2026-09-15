@@ -34,6 +34,49 @@ barrio:
 El barrio genera esa información cada vez que alguien contrata un servicio, pero no la
 capitaliza. Quién trabajó bien y quién no, hoy no queda registrado en ningún lado.
 
+### Dimensionamiento del problema
+
+> **Cómo leer estas cifras.** El proyecto es de inventiva propia y no cuenta con un cliente
+> real, por lo que los valores siguientes son **estimaciones construidas sobre supuestos
+> declarados**, no mediciones de campo. Se explicitan los parámetros para que puedan
+> discutirse y corregirse, y funcionan como **línea de base** contra la cual medir la mejora
+> una vez implementada la solución.
+
+**Supuestos del modelo**
+
+| Parámetro | Valor | Origen |
+|---|---|---|
+| Viviendas del barrio de referencia | 300 | Tamaño habitual de un barrio privado mediano |
+| Contrataciones de oficio por vivienda al mes | 0,5 | Supuesto |
+| Contrataciones mensuales en el barrio | ~150 | Derivado de los dos anteriores |
+| Tiempo que dedica el residente a decidir a quién contratar | ~30 min | Supuesto: lectura del grupo, consultas y espera de respuestas |
+
+**Línea de base: el problema hoy**
+
+| Componente del problema | Indicador | Valor actual |
+|---|---|---|
+| La búsqueda es dispersa | Tiempo desde que surge la necesidad hasta decidir a quién contratar | ~30 min de dedicación, con esperas de horas |
+| La reputación es volátil | Porcentaje de contrataciones que dejan un registro consultable por el resto del barrio | **0 %** |
+| El canal se satura | Pedidos de oficio publicados por mes en el grupo de mensajería | ~150 |
+
+El segundo indicador es el más relevante: es el único que **no mejora** por más personal
+administrativo que se destine, porque el problema no es de capacidad sino de que la
+información no se registra en ningún lado.
+
+**Efecto esperado de la implementación**
+
+| Indicador | Hoy | Con la plataforma |
+|---|---|---|
+| Tiempo hasta decidir a quién contratar | ~30 min y espera de respuestas | Búsqueda filtrada por rubro, en minutos |
+| Contrataciones que dejan registro consultable | 0 % | ≥ 40 % (ver criterios de éxito) |
+| Pedidos de oficio en el grupo de mensajería | ~150 por mes | Reducción estimada del 50 % |
+
+**Cómo se validan estos supuestos.** Antes de comenzar la etapa de desarrollo se prevé
+consultar a un grupo reducido de residentes de barrios privados sobre dos preguntas concretas:
+cuántas veces al mes contratan un oficio, y cuánto tardan en conseguir a alguien de confianza.
+Con esas respuestas los parámetros de la primera tabla dejan de ser supuestos y la línea de
+base queda contrastada.
+
 ## La propuesta
 
 Una aplicación web, provista por el barrio a sus residentes, donde:
@@ -119,8 +162,8 @@ La plataforma centraliza lo mejor de las alternativas actuales: mantiene la **se
 ## Análisis de Viabilidad
 
 * **Viabilidad Técnica:** El riesgo tecnológico es bajo. Se va a usar el stack con Java 21, Spring Boot, Thymeleaf y MySQL 8, que ya manejamos gracias a la trayectoria en la tecnicatura. La decisión consciente de evitar arquitecturas distribuidas, APIs separadas del frontend y despliegues complejos en contenedores garantiza que el esfuerzo técnico se centre en resolver la lógica de negocio y no en la configuración de la infraestructura.
-* **Viabilidad Temporal:** El cronograma proyectado es realista para un equipo de dos personas. Al haber acotado formalmente el alcance, el volumen de módulos a desarrollar entra en el plazo de 10 semanas de codificación y pruebas, dejando margen para imprevistos.
-* **Viabilidad de Dominio:** Las reglas de negocio, el circuito de habilitaciones y los problemas de fricción descritos se validan a través del contacto directo con la realidad de los barrios privados. Se cuenta con posibles usuarios que podrían realizar una encuesta o validar el flujo de la aplicación. Esto asegura que la solución no se base en supuestos teóricos, sino en el funcionamiento real y las necesidades concretas de estas comunidades.
+* **Viabilidad Temporal:** El cronograma proyectado es realista para un equipo de dos personas. Al haber acotado formalmente el alcance, los seis módulos entran en las 7 semanas de codificación y pruebas de la Etapa 3, a razón de un módulo por semana, con la última reservada para pruebas, informe y video. El margen para imprevistos lo da la política de recorte por prioridades definida más abajo, no la holgura del cronograma.
+* **Viabilidad de Dominio:** El proyecto es de inventiva propia y no cuenta con un cliente real. Las reglas de negocio, el circuito de habilitaciones y los puntos de fricción descritos se apoyan en el funcionamiento observable de los barrios privados y en los supuestos declarados en [Dimensionamiento del problema](#dimensionamiento-del-problema), no en un relevamiento de campo ya realizado. Está previsto contrastarlos consultando a un grupo reducido de residentes antes de comenzar la etapa de desarrollo. Se considera una viabilidad razonable porque el dominio es accesible —no requiere conocimiento especializado ni acceso privilegiado a información— y porque ninguna decisión de diseño depende de un dato que hoy no se tenga.
 
 ----
 ## Riesgos y Mitigaciones
