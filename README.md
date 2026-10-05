@@ -226,6 +226,28 @@ distribuida ni contenedores: para este volumen serían sobreingeniería.
 
 ---
 
+## Arquitectura
+
+**Aplicación monolítica organizada en capas, con el patrón MVC en la capa de presentación.**
+
+| Capa | Responsabilidad |
+|---|---|
+| **Presentación** | Controladores Spring MVC y vistas Thymeleaf. Reciben la petición, validan el formato de la entrada y eligen la vista |
+| **Servicios** | Reglas de negocio y límites de las transacciones. Es donde vive, por ejemplo, la regla de que solo el residente que contrató puede reseñar |
+| **Persistencia** | Repositorios Spring Data JPA y entidades |
+| **Seguridad** | Spring Security, de forma transversal: autenticación y autorización por rol sobre rutas y métodos |
+
+Cada capa invoca únicamente a la inmediatamente inferior: un controlador nunca accede a un
+repositorio de forma directa. Los paquetes se organizan por capa (`controller/`, `service/`,
+`repository/`, `entity/`).
+
+El documento completo —con los diagramas de capas, de dependencias entre módulos y del flujo
+crítico de contratación— está en [`docs/arquitectura.md`](docs/arquitectura.md). La
+justificación de la elección, con las alternativas evaluadas, en la
+[decisión 010](docs/decisiones/010-arquitectura-en-capas.md).
+
+---
+
 ## Herramientas de gestión del proyecto
 
 | Herramienta | Uso |
@@ -241,7 +263,8 @@ distribuida ni contenedores: para este volumen serían sobreingeniería.
 | Documento | Contenido |
 |---|---|
 | [Módulos del sistema](docs/modulos.md) | Listado de módulos a desarrollar, con responsabilidad, funcionalidades, entidades y prioridad |
-| [Diagrama entidad-relación](docs/der-db.png) | Esquema de la base de datos |
+| [Arquitectura de la aplicación](docs/arquitectura.md) | Estilo arquitectónico, capas, responsabilidades, organización del código y flujo crítico |
+| [Diagrama de base de datos](docs/diagrama-base-de-datos.md) | Modelo físico de la base, con cardinalidades explícitas |
 | [Diagrama de clases (UML)](docs/UML/diagrama_clases.md) | Modelo de dominio orientado a objetos del backend, en Mermaid |
 | [Diccionario de datos](docs/diccionario_datos.md) | Detalle de cada tabla y columna |
 | [Scripts de base de datos](db/) | `schema.sql` (DDL), `data.sql` (datos semilla) y la regla de sincronización del esquema |

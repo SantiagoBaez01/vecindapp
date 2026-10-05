@@ -16,6 +16,8 @@ memoria del equipo, y que quede explícito el criterio detrás de cada elección
 | [006](006-aplicacion-web-sin-movil.md) | Aplicación web responsive, sin versión móvil ni PWA | 27/08/2026 |
 | [007](007-nube-solo-base-de-datos.md) | El componente en la nube es únicamente la base de datos | 27/08/2026 |
 | [008](008-ajustes-modelo-de-datos.md) | Ajustes al modelo de datos tras la definición de módulos | 14/09/2026 |
+| [009](009-enumeraciones-vs-tablas.md) | Enumeraciones frente a tablas de referencia | 04/10/2026 |
+| [010](010-arquitectura-en-capas.md) | Arquitectura monolítica en capas | 04/10/2026 |
 
 ## Formato
 
