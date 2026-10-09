@@ -81,7 +81,7 @@ es por rubro, y ese ya está resuelto.
 ## Consecuencias
 
 - Se actualizaron `db/schema.sql`, `db/data.sql` y `docs/diccionario_datos.md`.
-- **El diagrama `docs/der-db.png` quedó desactualizado y debe regenerarse** para incorporar la
+- **El diagrama `docs/diagrama-base-de-datos.png` quedó desactualizado y debe regenerarse** para incorporar la
   tabla `prestador_rubro` y los campos nuevos.
 - Cada integrante debe recrear su base local siguiendo la regla de [`db/README.md`](../../db/README.md):
   `DROP DATABASE`, crearla de nuevo y correr los scripts actualizados desde `main`.

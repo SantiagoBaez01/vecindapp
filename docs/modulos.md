@@ -4,7 +4,8 @@ Listado de los módulos a desarrollar, con su responsabilidad, las funcionalidad
 incluyen, las entidades del modelo de datos que manipulan y su prioridad dentro del alcance.
 
 El modelo de datos al que se hace referencia está documentado en
-[`diccionario_datos.md`](diccionario_datos.md) y en el diagrama [`der-db.png`](der-db.png).
+[`diccionario_datos.md`](diccionario_datos.md) y en el
+[diagrama de base de datos](diagrama-base-de-datos.md).
 Los scripts del esquema están en [`/db`](../db).
 
 **Criterio de prioridad.** Se corresponde con la política de recorte declarada en el
