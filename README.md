@@ -258,6 +258,33 @@ justificación de la elección, con las alternativas evaluadas, en la
 
 ---
 
+## Backend (aplicación)
+
+El código Spring Boot vive en [`backend/`](backend/).
+
+### Cómo levantar el esqueleto (Turno 1)
+
+```bash
+cd backend
+# Windows: asegurarse de que Windows Defender no bloquee Maven
+# Excluir: esta carpeta del repo, %USERPROFILE%\.m2 y backend\target
+.\mvnw.cmd spring-boot:run
+```
+
+Abrir [http://localhost:8080](http://localhost:8080). En este turno la app arranca **sin** conectar a MySQL (DataSource/JPA deshabilitados hasta el Turno 2).
+
+Para desarrollo local posterior: copiar `backend/src/main/resources/application-local.properties.example` a `application-local.properties` (archivo gitignored) y completar usuario/contraseña de MySQL.
+
+### Windows Defender
+
+Si Maven falla al crear `target/` o descarga jars que “desaparecen”, agregar exclusiones en Protección contra virus y amenazas → Exclusiones:
+
+- la carpeta del repositorio `vecindapp`
+- `%USERPROFILE%\.m2`
+- `backend\target`
+
+---
+
 ## Documentación del proyecto
 
 | Documento | Contenido |

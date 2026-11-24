@@ -1,0 +1,9 @@
+# Activar con: --spring.profiles.active=aiven
+# Definir en el entorno (PowerShell):
+#   $env:SPRING_DATASOURCE_URL="jdbc:mysql://HOST:PORT/DB?ssl-mode=REQUIRED"
+#   $env:SPRING_DATASOURCE_USERNAME="avnadmin"
+#   $env:SPRING_DATASOURCE_PASSWORD="***"
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect

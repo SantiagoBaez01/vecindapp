@@ -1,56 +1,63 @@
-# Definición de rutas 
+# Definición de rutas
 
-## *Públicas*
-| Ruta (URL)                  | Método    | Rol permitido     | Descripción                                                       |
-| ---                         | ---       | ---               | ---                                                               |
-| /                           | GET       | Cualquiera        | Landing page de bienvenida                                        |
-| /login                      | GET, POST | Cualquiera        | Pantalla de inicio de sesión y procesamiento del formulario       |
-| /css/**, /js/**, /images/** | GET       | Cualquiera        | Archivos estáticos de Thymeleaf.                                  |
+## Públicas
 
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| / | GET | Cualquiera | Landing page de bienvenida |
+| /login | GET, POST | Cualquiera | Pantalla de inicio de sesión y procesamiento del formulario |
+| /registro/prestador | GET, POST | Cualquiera | Alta de prestador (queda en estado PENDIENTE) — M2 |
+| /css/**, /js/**, /images/** | GET | Cualquiera | Archivos estáticos |
 
-## *Comunes (Autenticados)*
-| Ruta (URL)    | Método           | Rol permitido                | Descripción                                                       |
-| ---           | ---              | ---                          | ---                                                               |
-| /home         | GET              | ADMIN, RESIDENTE, PRESTADOR  | Dashboard principal, redirecciona o muestra info según el rol.    |
-| /perfil       | GET, POST        | ADMIN, RESIDENTE, PRESTADOR  | Ver y actualizar datos personales como teléfono o contraseña.     |
+## Comunes (autenticados)
 
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| /home | GET | ADMIN, RESIDENTE, PRESTADOR | Dashboard; redirige según rol |
+| /perfil | GET, POST | ADMIN, RESIDENTE, PRESTADOR | Ver y actualizar teléfono o contraseña |
+| /logout | POST | Autenticados | Cierre de sesión |
 
-## *Módulo: Catálogo*
-| Ruta (URL)               | Método           | Rol permitido   | Descripción                                             |
-| ---                      | ---              | ---             | ---                                                     |
-| /catalogo                | GET              | RESIDENTE       | Listado de prestadores habilitados con filtros.         |
-| /catalogo/prestador/{id} | GET              | RESIDENTE       | Ficha de detalle, descripción y reseñas del prestador.  |
+## Catálogo
 
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| /catalogo | GET | RESIDENTE | Listado de prestadores habilitados con filtros |
+| /catalogo/prestador/{id} | GET | RESIDENTE | Ficha de detalle, descripción y reseñas |
 
-## *Módulo: Solicitudes (Residente)*
-| Ruta (URL)                         | Método     | Rol permitido   | Descripción                                                     |
-| ---                                | ---        | ---             | ---                                                             |
-| /mis-pedidos                       | GET        | RESIDENTE       | Listado de las solicitudes que generó el residente.             |
-| /mis-pedidos/nueva/{prestadorId}   | GET, POST  | RESIDENTE       | Formulario para pedir un trabajo a un prestador específico.     |
-| /mis-pedidos/{id}/aceptar          | POST       | RESIDENTE       | Aceptar el presupuesto enviado por el prestador.                |
-| /mis-pedidos/{id}/cancelar         | POST       | RESIDENTE       | Cancelar la solicitud antes de que finalice.                    |
+## Solicitudes (residente)
 
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| /mis-pedidos | GET | RESIDENTE | Listado de solicitudes generadas |
+| /mis-pedidos/nueva/{prestadorId} | GET, POST | RESIDENTE | Formulario para pedir un trabajo |
+| /mis-pedidos/{id}/aceptar | POST | RESIDENTE | Aceptar presupuesto |
+| /mis-pedidos/{id}/cancelar | POST | RESIDENTE | Cancelar solicitud |
+| /mis-pedidos/{id}/resenar | GET, POST | RESIDENTE | Reseña solo si la solicitud está FINALIZADO |
 
-## *Módulo: Solicitudes (Prestador)*
-| Ruta (URL)                      | Método     | Rol permitido   | Descripción                                                     |
-| ---                             | ---        | ---             | ---                                                             |
-| /mis-trabajo                    | GET        | PRESTADOR       | Listado de solicitudes recibidas.                               |
-| /mis-trabajos/{id}/presupuestar | POST       | PRESTADOR       | Enviar una cotización/respuesta al residente.                   |
-| /mis-trabajos/{id}/finalizar    | POST       | PRESTADOR       | Marcar el trabajo como terminado.                               |
+## Solicitudes (prestador)
 
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| /mis-trabajos | GET | PRESTADOR | Listado de solicitudes recibidas |
+| /mis-trabajos/{id}/presupuestar | POST | PRESTADOR | Marcar como presupuestada |
+| /mis-trabajos/{id}/finalizar | POST | PRESTADOR | Marcar trabajo como terminado |
+| /mi-estado | GET | PRESTADOR | Consultar estado de verificación |
 
-## *Módulo: Reseñas*
-| Ruta (URL)                 | Método     | Rol permitido  | Descripción                                                                   |
-| ---                        | ---        | ---            | ---                                                                           |
-| /mis-pedidos/{id}/resenar  | GET, POST  | RESIDENTE      | Formulario para dejar calificación y comentario, solo si está **FINALIZADO**. |
+## Administración
 
-
-## *Módulo: Administración*
-| Ruta (URL)                 | Método     | Rol permitido  | Descripción                                                                   |
-| ---                        | ---        | ---            | ---                                                                           |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
-| /             | GET              | Cualquiera                   | Landing page de bienvenida                                        |
+| Ruta (URL) | Método | Rol permitido | Descripción |
+| --- | --- | --- | --- |
+| /admin | GET | ADMIN | Panel general |
+| /admin/residentes | GET, POST | ADMIN | Padrón: listado y alta |
+| /admin/residentes/{id}/editar | GET, POST | ADMIN | Modificar residente |
+| /admin/residentes/{id}/desactivar | POST | ADMIN | Baja lógica del padrón |
+| /admin/residentes/{id}/activar | POST | ADMIN | Reactivar residente |
+| /admin/prestadores | GET | ADMIN | Listado y bandeja de pendientes |
+| /admin/prestadores/{id}/habilitar | POST | ADMIN | Habilitar prestador |
+| /admin/prestadores/{id}/rechazar | POST | ADMIN | Rechazar prestador |
+| /admin/prestadores/export | GET | ADMIN | Exportar CSV de habilitados |
+| /admin/rubros | GET, POST | ADMIN | Listado y alta de rubros |
+| /admin/solicitudes | GET | ADMIN | Vista de todas las solicitudes |
+| /admin/resenas | GET | ADMIN | Moderación de reseñas |
+| /admin/resenas/{id}/ocultar | POST | ADMIN | Ocultar reseña |
+| /admin/resenas/{id}/mostrar | POST | ADMIN | Volver a mostrar reseña |

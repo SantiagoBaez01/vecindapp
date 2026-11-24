@@ -1,0 +1,10 @@
+# Copiar este archivo a application-local.properties (no se versiona).
+# Turno 2: quitar el exclude de DataSource/JPA en VecindappApplication y usar estos valores.
+spring.datasource.url=jdbc:mysql://localhost:3306/vecindapp?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=changeme
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.open-in-view=false
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect

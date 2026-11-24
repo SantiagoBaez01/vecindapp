@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout :: layout(~{::title}, ~{::section})}">
+<title>Inicio · Vecindapp</title>
+<section class="hero">
+  <h1>Oficios del barrio, con confianza acumulada</h1>
+  <p>Prestadores verificados por la administración. Reseñas solo de vecinos que realmente contrataron.</p>
+  <div class="actions">
+    <a class="btn" th:href="@{/login}">Ingresar</a>
+  </div>
+  <p class="muted" style="margin-top:2rem;">Esqueleto del backend (Turno 1). El login real llega con el módulo de seguridad.</p>
+</section>
+</html>
