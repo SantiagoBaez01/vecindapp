@@ -1,3 +1,7 @@
+-- Crear la base de datos
+CREATE DATABASE vecindapp;
+USE vecindapp;
+
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,

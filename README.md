@@ -271,9 +271,9 @@ cd backend
 .\mvnw.cmd spring-boot:run
 ```
 
-Abrir [http://localhost:8080](http://localhost:8080). En este turno la app arranca **sin** conectar a MySQL (DataSource/JPA deshabilitados hasta el Turno 2).
+Abrir [http://localhost:8080](http://localhost:8080).
 
-Para desarrollo local posterior: copiar `backend/src/main/resources/application-local.properties.example` a `application-local.properties` (archivo gitignored) y completar usuario/contraseña de MySQL.
+Para desarrollo local: copiar `backend/src/main/resources/application-local.properties.example` a `application-local.properties` (archivo gitignored), completar usuario/contraseña de MySQL y aplicar los scripts de [`db/`](db/) (`schema.sql`, opcionalmente `data.sql`). La app usa `ddl-auto=validate`: el esquema lo gobiernan esos scripts, no Hibernate.
 
 ### Windows Defender
 
